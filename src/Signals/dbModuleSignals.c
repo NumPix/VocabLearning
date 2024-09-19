@@ -19,14 +19,14 @@ void dbModule_insertOne_signal(GtkWidget* widget, gpointer data) {
 
 void dbModule_findOne_signal(GtkWidget* widget, gpointer data) {
     dbModuleFindData* findData = (dbModuleFindData*)data;
-    if (dbModule_findOne(findData->collection_name, findData->query, findData->opts, findData->read_prefs) == EXIT_FAILURE) {
+    if (dbModule_findOne(findData->collection_name, findData->query, findData->opts, findData->read_prefs) == NULL) {
         fprintf(stderr, "Failed to find the document\n");
     }
 }
 
 void dbModule_findAll_signal(GtkWidget* widget, gpointer data) {
     dbModuleFindData* findData = (dbModuleFindData*)data;
-    if (dbModule_findAll(findData->collection_name, findData->query, findData->opts, findData->read_prefs) == EXIT_FAILURE) {
+    if (dbModule_findAll(findData->collection_name, findData->query, findData->opts, findData->read_prefs) == NULL) {
         fprintf(stderr, "Failed to find the documents\n");
     }
 }

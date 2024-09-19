@@ -1,7 +1,6 @@
-#include "src/Signals/dictionaryEntryModelSignals.h"
-
 #include <gtk/gtk.h>
 
+#include "src/Signals/dictionaryEntryModelSignals.h"
 #include "src/Models/dictionaryEntryModel.h"
 
 void dictionaryEntryModel_addEntry_signal(GtkWidget* widget, gpointer data) {

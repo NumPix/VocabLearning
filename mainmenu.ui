@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Created with Cambalache 0.90.4 -->
+<interface>
+  <!-- interface-name mainmenu.ui -->
+  <!-- interface-authors NumPix
+lecpix@vk.com -->
+  <requires lib="gtk" version="4.12"/>
+  <object class="GtkWindow" id="mainMenuWindow">
+    <property name="default-height">360</property>
+    <property name="default-width">640</property>
+    <property name="title">Vocabulary Learning</property>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkButton" id="vocabularyButton">
+            <property name="label">Vocabulary</property>
+            <property name="margin-bottom">8</property>
+            <property name="margin-end">16</property>
+            <property name="margin-start">16</property>
+            <property name="margin-top">16</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="learnButton">
+            <property name="label">Learn</property>
+            <property name="margin-bottom">8</property>
+            <property name="margin-end">16</property>
+            <property name="margin-start">16</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

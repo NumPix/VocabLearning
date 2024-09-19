@@ -3,24 +3,24 @@
 #include "src/Signals/dictionaryEntryModelSignals.h"
 #include "src/Signals/dbModuleSignals.h"
 
-const char* uri_string = "mongodb://localhost:27017/";
+char* uri_string = "mongodb://localhost:27017/";
 
 static void activate(GtkApplication* app, gpointer user_data) {
     GtkBuilder* builder = gtk_builder_new();
-    gtk_builder_add_from_file(builder, "builder.ui", NULL);
+    gtk_builder_add_from_file(builder, "mainmenu.ui", NULL);
 
-    GObject* window = gtk_builder_get_object(builder, "window");
+    GObject* window = gtk_builder_get_object(builder, "mainMenuWindow");
     gtk_window_set_application(GTK_WINDOW(window), app);
 
-    GObject* button = gtk_builder_get_object(builder, "button");
-    g_signal_connect(button, "clicked", G_CALLBACK(dbModule_connect_signal), uri_string);
+    GObject* vocabularyButton = gtk_builder_get_object(builder, "vocabularyButton");
+    g_signal_connect(vocabularyButton, "clicked", G_CALLBACK(dbModule_connect_signal), uri_string);
 
     DictionaryEntryData *entry = malloc(sizeof(DictionaryEntryData));
     entry->term = "Hello, World!";
     entry->translation = "Привет, Мир!";
 
-    GObject* addButton = gtk_builder_get_object(builder, "addButton");
-    g_signal_connect(addButton, "clicked", G_CALLBACK(dictionaryEntryModel_addEntry_signal), entry);
+    GObject* learnButton = gtk_builder_get_object(builder, "learnButton");
+    g_signal_connect(learnButton, "clicked", G_CALLBACK(dictionaryEntryModel_addEntry_signal), entry);
 
     gtk_widget_set_visible(GTK_WIDGET(window), TRUE);
     g_object_unref(builder);
