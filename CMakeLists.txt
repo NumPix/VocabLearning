@@ -1,7 +1,15 @@
 cmake_minimum_required(VERSION 3.30.3)
 project(vocabLearning C)
 
-add_executable(${PROJECT_NAME} src/main.c src/dbManager.c src/dbManagerGTK.c)
+add_executable(${PROJECT_NAME} 
+    src/main.c 
+    src/dbModule.c 
+    src/Models/dictionaryEntryModel.c 
+    src/Signals/dictionaryEntryModelSignals.c
+    src/Signals/dbModuleSignals.c
+)
+
+
 
 find_package(libmongoc-1.0 REQUIRED)
 find_package(PkgConfig REQUIRED) 

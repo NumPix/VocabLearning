@@ -1,20 +1,19 @@
-#include "src/dbModule.h"
 #include "src/Models/dictionaryEntryModel.h"
 
+#include "src/dbModule.h"
 
-int dictionaryEntryModel_addEntry(const char *term, const char *translation) {
-
+int dictionaryEntryModel_addEntry(const char* term, const char* translation) {
     if (!term) {
         fprintf(stderr, "Failed to add dictionary entry: term is NULL\n");
         return EXIT_FAILURE;
-    } 
+    }
 
     if (!translation) {
         fprintf(stderr, "Failed to add dictionary entry: translation is NULL\n");
         return EXIT_FAILURE;
-    } 
+    }
 
-    bson_t *doc = bson_new();
+    bson_t* doc = bson_new();
 
     if (!doc) {
         fprintf(stderr, "Failed to allocate memory for BSON document\n");
@@ -24,7 +23,7 @@ int dictionaryEntryModel_addEntry(const char *term, const char *translation) {
     BSON_APPEND_UTF8(doc, "term", term);
     BSON_APPEND_UTF8(doc, "translation", translation);
 
-    bson_t *query = bson_new();
+    bson_t* query = bson_new();
 
     if (!query) {
         fprintf(stderr, "Failed to allocate memory for BSON query\n");
@@ -43,11 +42,7 @@ int dictionaryEntryModel_addEntry(const char *term, const char *translation) {
 
     bson_destroy(query);
 
-    if (!dbModule_insertOne(doc, "dictionary_entries")) {
-        fprintf(stderr, "Failed to add dictionary entry\n");
-        bson_destroy(doc);
-        return EXIT_FAILURE;
-    }
+    dbModule_insertOne("dictionary_entries", doc);
 
     bson_destroy(doc);
 

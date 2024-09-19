@@ -9,6 +9,11 @@
             <property name="label">Connect to DB</property>
           </object>
         </child>
+        <child>
+          <object class="GtkButton" id="addButton">
+            <property name="label">Test add DB entry</property>
+          </object>
+        </child>
       </object>
     </child>
   </object>
